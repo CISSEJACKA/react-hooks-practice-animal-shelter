@@ -1,27 +1,22 @@
-import React from "react";
+// Filters.js
+import React from 'react';
 
-function Pet() {
+function Filters({ onChangeType, onFindPetsClick }) {
+  const handleChange = (event) => {
+    onChangeType(event.target.value);
+  };
+
   return (
-    <div className="card" data-testid="pet">
-      <div className="content">
-        <span className="header">
-          {/*'♀' OR '♂' */}
-          PET NAME
-        </span>
-        <div className="meta">
-          <span className="date">PET TYPE</span>
-        </div>
-        <div className="description">
-          <p>Age: PET AGE</p>
-          <p>Weight: PET WEIGHT</p>
-        </div>
-      </div>
-      <div className="extra content">
-        <button className="ui disabled button">Already adopted</button>
-        <button className="ui primary button">Adopt pet</button>
-      </div>
+    <div className="filters">
+      <select onChange={handleChange}>
+        <option value="all">All</option>
+        <option value="cat">Cats</option>
+        <option value="dog">Dogs</option>
+        <option value="micropig">Micropigs</option>
+      </select>
+      <button onClick={onFindPetsClick}>Find pets</button>
     </div>
   );
 }
 
-export default Pet;
+export default Filters;
